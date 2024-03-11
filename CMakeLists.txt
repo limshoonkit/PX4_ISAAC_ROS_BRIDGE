@@ -13,7 +13,6 @@ endif()
 
 #############################################
 # Dependencies
-find_package(isaac_ros_visual_slam REQUIRED)
 find_package(mavros REQUIRED)
 
 find_package(ament_cmake_auto REQUIRED)
