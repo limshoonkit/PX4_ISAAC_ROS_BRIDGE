@@ -1,0 +1,8 @@
+/**:
+  ros__parameters:
+    plugin_denylist:
+      - '*'
+
+      
+    # plugin_allowlist:
+    #   - 'sys_*'
