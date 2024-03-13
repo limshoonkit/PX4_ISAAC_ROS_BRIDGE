@@ -19,9 +19,10 @@ def generate_launch_description():
         Node(
             package='mavros',
             executable='mavros_node',
-            parameters=[{
-                'pluginlists_yaml': px4_pluginlists_path,
-                'config_yaml': px4_config_path,
+            parameters=[
+                px4_pluginlists_path,
+                px4_config_path,
+            {    
                 'fcu_url': '/dev/ttyACM0:921600',
                 'gcs_url': 'udp://@10.42.0.1',
                 'tgt_system': 1,

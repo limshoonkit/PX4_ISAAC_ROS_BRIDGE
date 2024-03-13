@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<robot name="s500" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+   <joint name="base_joint" type="fixed">
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.07600"/>
+    <parent link="map"/>
+    <child link="base_link"/>
+  </joint>
+  <joint name="imu0_joint" type="fixed">
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00009 0.00035 0.00884"/>
+    <parent link="base_link"/>
+    <child link="imu0_link"/>
+  </joint>
+  <joint name="prop-1_joint" type="revolute">
+    <limit lower="-3.14000" upper="3.14000" effort="0.19000" velocity="1020.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.17202 -0.17022 0.04861"/>
+    <parent link="base_link"/>
+    <child link="prop-1_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="prop-2_joint" type="revolute">
+    <limit lower="-3.14000" upper="3.14000" effort="0.19000" velocity="1020.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.16623 0.16971 0.04861"/>
+    <parent link="base_link"/>
+    <child link="prop-2_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="prop-3_joint" type="revolute">
+    <limit lower="-3.14000" upper="3.14000" effort="0.19000" velocity="1020.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.17403 0.16804 0.04890"/>
+    <parent link="base_link"/>
+    <child link="prop-3_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="prop-4_joint" type="revolute">
+    <limit lower="-3.14000" upper="3.14000" effort="0.19000" velocity="1020.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.16679 -0.16870 0.04890"/>
+    <parent link="base_link"/>
+    <child link="prop-4_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="zedm_joint" type="fixed">
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.08650 0.00721 -0.03226"/>
+    <parent link="base_link"/>
+    <child link="zedm_camera_center"/>
+  </joint>
+  <joint name="zedm_left_camera_joint" type="fixed">
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.02062 0.022855 0.00028"/>
+    <parent link="zedm_camera_center"/>
+    <child link="zedm_left_camera_frame"/>
+  </joint>
+  <joint name="zedm_right_camera_joint" type="fixed">
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.02062 -0.037145 0.00028"/>
+    <parent link="zedm_camera_center"/>
+    <child link="zedm_right_camera_frame"/>
+  </joint>
+  <link name="base_link">
+    <inertial>
+      <inertia ixx="0.02252" ixy="-0.00000" ixz="-0.00000" iyy="0.02261" iyz="0.00000" izz="0.03954"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00009 0.00035 0.00884"/>
+      <mass value="1.58000"/>
+    </inertial>
+    <visual name="body">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00009 0.00035 0.00884"/>
+      <material name="pixhawk"/>
+      <geometry>
+        <mesh filename="package://px4_isaac_ros_bridge/urdf/meshes/dae/body.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="imu0_link"/>
+  <link name="prop-1_link">
+    <visual name="prop-1">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <material name="prop"/>
+      <geometry>
+        <mesh filename="package://px4_isaac_ros_bridge/urdf/meshes/dae/prop1.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="prop-2_link">
+    <visual name="prop-2">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <material name="prop"/>
+      <geometry>
+        <mesh filename="package://px4_isaac_ros_bridge/urdf/meshes/dae/prop2.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="prop-3_link">
+    <visual name="prop-3">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 -0.00000"/>
+      <material name="prop"/>
+      <geometry>
+        <mesh filename="package://px4_isaac_ros_bridge/urdf/meshes/dae/prop3.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="prop-4_link">
+    <visual name="prop-4">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <material name="prop"/>
+      <geometry>
+        <mesh filename="package://px4_isaac_ros_bridge/urdf/meshes/dae/prop4.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="map"/>
+  <link name="zedm_left_camera_frame">
+    <sensor name="zedm_left_cam" type="camera">
+      <origin rpy="3.14159 -1.57080 -0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <parent link="zedm_left_camera_frame"/>
+      <camera>
+        <image>
+          <width>1080</width>
+          <height>720</height>
+          <hfov>1.57080</hfov>
+        </image>
+      </camera>
+    </sensor>
+  </link>
+  <link name="zedm_camera_center">
+    <visual name="zedm">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <material name="zedm"/>
+      <geometry>
+        <mesh filename="package://px4_isaac_ros_bridge/urdf/meshes/dae/zedm.dae" scale="1.00000 1.00000 1.00000"/>
+        
+      </geometry>
+    </visual>
+  </link>
+  <link name="zedm_right_camera_frame">
+    <sensor name="zedm_right_cam" type="camera">
+      <origin rpy="3.14159 -1.57080 -0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <parent link="zedm_right_camera_frame"/>
+      <camera>
+        <image>
+          <width>1080</width>
+          <height>720</height>
+          <hfov>1.57080</hfov>
+        </image>
+      </camera>
+    </sensor>
+  </link>
+  <material name="pixhawk">
+    <color rgba="0.00000 0.00000 0.00000 1.00000"/>
+  </material>
+  <material name="prop">
+    <color rgba="0.12549 0.12549 0.12549 1.00000"/>
+  </material>
+  <material name="zedm">
+    <color rgba="0.00000 0.00000 0.00000 1.00000"/>
+  </material>
+  
+</robot>

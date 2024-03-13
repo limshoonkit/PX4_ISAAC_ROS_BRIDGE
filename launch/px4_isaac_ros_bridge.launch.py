@@ -65,9 +65,9 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        # px4_bridge_node,
+        px4_bridge_node,
         px4_launch_include,
         robot_state_publisher_node,
         joint_state_publisher_node,
-        # rviz_node,
+        rviz_node,
     ])
